@@ -6,6 +6,7 @@ import com.misiontic.usersMicro.repository.IUserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -46,6 +47,11 @@ public class UserService implements IUserService {
         user.setIsAdmin(userUpdateDTO.getIsAdmin());
         iUserRepository.save(user);
         return "Actualizado";
+    }
+
+    @Override
+    public List<User> getAllAdmin() {
+        return  iUserRepository.findByIsAdminIsTrue();
     }
 
 }
