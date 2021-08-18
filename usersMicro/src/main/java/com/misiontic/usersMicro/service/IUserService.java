@@ -10,4 +10,6 @@ public interface IUserService {
     Optional<User> getUserById(Long userId);
 
     Optional<User> getUserByUsername(String username);
+
+    String deleteUser(Long userId);
 }

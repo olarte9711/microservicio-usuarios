@@ -30,4 +30,10 @@ public class UserService implements IUserService {
         return user;
     }
 
+    @Override
+    public String deleteUser(Long userId) {
+        iUserRepository.deleteByIdUser(userId);
+        return "Borrado";
+    }
+
 }

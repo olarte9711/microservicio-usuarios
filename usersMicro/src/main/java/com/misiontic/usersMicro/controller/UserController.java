@@ -20,6 +20,10 @@ public class UserController {
     public ResponseEntity<String> createUser(@RequestBody User user) {
         return new ResponseEntity<>(iUserService.createUser(user), HttpStatus.CREATED);
     }
+    @DeleteMapping("/delete-user/{userId}")
+    public ResponseEntity<String> deleteUser(@PathVariable Long userId){
+        return new ResponseEntity<>(iUserService.deleteUser(userId), HttpStatus.OK);
+    }
 
     @GetMapping("/get-by-id/{userId}")
     public ResponseEntity<Optional<User>> getUserById(@PathVariable Long userId) {
