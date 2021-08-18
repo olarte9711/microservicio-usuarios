@@ -1,20 +1,15 @@
-package com.misiontic.usersMicro.model;
+package com.misiontic.usersMicro.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
-    @Id
-    private Long idUser;
+public class UserUpdateDTO {
     private String fullname;
     private String username;
     private String password;
     private Boolean isAdmin;
-
 }

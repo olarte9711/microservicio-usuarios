@@ -1,5 +1,6 @@
 package com.misiontic.usersMicro.service;
 
+import com.misiontic.usersMicro.dto.UserUpdateDTO;
 import com.misiontic.usersMicro.model.User;
 import com.misiontic.usersMicro.repository.IUserRepository;
 import lombok.AllArgsConstructor;
@@ -19,8 +20,8 @@ public class UserService implements IUserService {
         return "Creado satisfactoriamente";
     }
     @Override
-    public Optional<User> getUserById(Long userId) {
-        Optional<User> userResult = iUserRepository.findByIdUser(userId);
+    public User getUserById(Long userId) {
+        User userResult = iUserRepository.findByIdUser(userId);
         return userResult;
     }
 
@@ -34,6 +35,17 @@ public class UserService implements IUserService {
     public String deleteUser(Long userId) {
         iUserRepository.deleteByIdUser(userId);
         return "Borrado";
+    }
+
+    @Override
+    public String updateUser(Long userId, UserUpdateDTO userUpdateDTO) {
+        User user = iUserRepository.findByIdUser(userId);
+        user.setFullname(userUpdateDTO.getFullname());
+        user.setUsername(userUpdateDTO.getUsername());
+        user.setPassword(userUpdateDTO.getPassword());
+        user.setIsAdmin(userUpdateDTO.getIsAdmin());
+        iUserRepository.save(user);
+        return "Actualizado";
     }
 
 }
